@@ -1,0 +1,2687 @@
+{
+  "name": "La de Olivos",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// === CATÁLOGO LA DE OLIVOS ===\n// Para cargar precios: poné el número en \"p\". Si queda null, se muestra \"$____\"\n// y el agente NO informa ese precio (lo confirma el local).\nconst catalogo = {\n  \"RAVIOLES\": [\n    {n:\"Verdura y queso\", p:null},\n    {n:\"Verdura y mozzarella\", p:null},\n    {n:\"Ricota y queso\", p:null},\n    {n:\"Ricota, queso y jamón\", p:null},\n    {n:\"Ricota, queso y nuez\", p:null},\n    {n:\"Carne y verdura\", p:null},\n    {n:\"Pollo, carne y verdura\", p:null},\n    {n:\"Super caseros (pollo, jamón y verdura)\", p:null},\n    {n:\"Pollo, jamón y 4 quesos\", p:null},\n    {n:\"Pavita, jamón y almendras\", p:null}\n  ],\n  \"CASERITOS / RAVIOLONES\": [\n    {n:\"Pollo, jamón y provolone\", p:null},\n    {n:\"Verdura y ricota\", p:null},\n    {n:\"Ricota, mozzarella y jamón\", p:null},\n    {n:\"Espinaca, seso y provolone\", p:null},\n    {n:\"Calabaza y queso port salut\", p:null},\n    {n:\"Ricota, apio, roquefort y nuez\", p:null},\n    {n:\"Salmón rosado y ricota\", p:null}\n  ],\n  \"ÑOQUIS\": [\n    {n:\"Papa\", p:null},\n    {n:\"Ricota\", p:null},\n    {n:\"Espinaca\", p:null},\n    {n:\"Calabaza (solo días 29)\", p:null},\n    {n:\"Morrón (solo días 29)\", p:null},\n    {n:\"Remolacha (solo días 29)\", p:null}\n  ],\n  \"CANELONES\": [\n    {n:\"Pollo, jamón y verdura\", p:null},\n    {n:\"Pollo, jamón y 4 quesos\", p:null},\n    {n:\"Pavita, jamón y almendras\", p:null},\n    {n:\"Verdura y mozzarella\", p:null},\n    {n:\"Ricota y queso\", p:null},\n    {n:\"Ricota, queso y nuez\", p:null},\n    {n:\"Ricota, mozzarella y jamón\", p:null},\n    {n:\"Humita\", p:null},\n    {n:\"Espinaca y ricota (sin sal, masa de espinaca)\", p:null}\n  ],\n  \"LASAGNA\": [\n    {n:\"Pollo, jamón, verdura y ricota (consultar opción vegetariana)\", p:null}\n  ],\n  \"CREPES\": [\n    {n:\"Verdura y ricota\", p:null},\n    {n:\"Lomo al verdeo\", p:null},\n    {n:\"Pollo y champignones\", p:null}\n  ],\n  \"CAPPELLETTIS CASEROS\": [\n    {n:\"Pollo, jamón y provolone\", p:null},\n    {n:\"Mozzarella, jamón y selección de quesos\", p:null}\n  ],\n  \"TORTELLETTIS\": [\n    {n:\"Pollo y jamón\", p:null}\n  ],\n  \"AGNOLOTTIS\": [\n    {n:\"Pollo, jamón y verdura\", p:null},\n    {n:\"Ricota y queso\", p:null},\n    {n:\"Ricota, queso y nuez\", p:null}\n  ],\n  \"SORRENTINOS\": [\n    {n:\"Mozzarella, jamón y selección de quesos\", p:null}\n  ],\n  \"ÑOQUIS ROMANOS\": [\n    {n:\"A la romana (sémola)\", p:null},\n    {n:\"A la romana con jamón\", p:null},\n    {n:\"A la romana con espinaca\", p:null}\n  ],\n  \"TALLARINES / FIDEOS\": [\n    {n:\"Caseros con crema al huevo\", p:null},\n    {n:\"Caseros con crema y espinaca\", p:null},\n    {n:\"Yemita\", p:null},\n    {n:\"Espinaca\", p:null},\n    {n:\"Morrón\", p:null},\n    {n:\"Fusiles\", p:null},\n    {n:\"Macarrones\", p:null},\n    {n:\"Mostacholes\", p:null},\n    {n:\"Papardelles al huevo\", p:null},\n    {n:\"Papardelles de espinaca\", p:null}\n  ],\n  \"SALSAS\": [\n    {n:\"Tuco de pollo\", p:null},\n    {n:\"Bolognesa\", p:null},\n    {n:\"Pomarola\", p:null},\n    {n:\"Fileto\", p:null},\n    {n:\"Scarparo\", p:null},\n    {n:\"Blanca\", p:null},\n    {n:\"Caruso\", p:null},\n    {n:\"Rosé\", p:null},\n    {n:\"Pesto\", p:null},\n    {n:\"4 quesos\", p:null}\n  ],\n  \"QUESO RALLADO\": [\n    {n:\"50 gr\", p:null},\n    {n:\"100 gr\", p:null},\n    {n:\"150 gr\", p:null},\n    {n:\"200 gr\", p:null},\n    {n:\"Hebras (150 gr)\", p:null}\n  ],\n  \"PANES\": [\n    {n:\"Baguetines\", p:null},\n    {n:\"Petit (x6)\", p:null},\n    {n:\"De campo (x4)\", p:null}\n  ],\n  \"COMIDAS\": [\n    {n:\"Zapallitos rellenos\", p:null},\n    {n:\"Zapallitos rellenos con jamón\", p:null},\n    {n:\"Bocaditos de verdura horneados\", p:null},\n    {n:\"Bocaditos de pollo al verdeo horneados\", p:null},\n    {n:\"Bombas de papa con jamón y mozzarella\", p:null},\n    {n:\"Bombas de calabaza con port salut\", p:null},\n    {n:\"Milanesas de pollo\", p:null},\n    {n:\"Milanesas de mozzarella\", p:null},\n    {n:\"Milanesas de berenjenas\", p:null},\n    {n:\"Milanesas de soja\", p:null},\n    {n:\"Pollo al horno\", p:null},\n    {n:\"Lechón al horno (Navidad/Año Nuevo)\", p:null},\n    {n:\"Pastel tricolor (calabaza, queso, espinaca)\", p:null},\n    {n:\"Tortilla de papa (horno o sartén)\", p:null},\n    {n:\"Tortilla de espinaca (horno)\", p:null}\n  ],\n  \"TARTAS\": [\n    {n:\"Zapallitos (grande)\", p:null}, {n:\"Zapallitos (chica)\", p:null},\n    {n:\"Cebolla y queso (grande)\", p:null}, {n:\"Cebolla y queso (chica)\", p:null},\n    {n:\"Puerros (grande)\", p:null}, {n:\"Puerros (chica)\", p:null},\n    {n:\"Brócoli (grande)\", p:null}, {n:\"Brócoli (chica)\", p:null},\n    {n:\"Acelga y espinaca (grande)\", p:null}, {n:\"Acelga y espinaca (chica)\", p:null},\n    {n:\"Pollo (grande)\", p:null}, {n:\"Pollo (chica)\", p:null},\n    {n:\"Jamón y queso (grande)\", p:null}, {n:\"Jamón y queso (chica)\", p:null},\n    {n:\"Atún (chica)\", p:null}\n  ],\n  \"TAPAS\": [\n    {n:\"Tapas de empanadas (grande)\", p:null},\n    {n:\"Tapas de empanadas (chica)\", p:null},\n    {n:\"Tapa de pascualina\", p:null}\n  ],\n  \"EMPANADAS\": [\n  {n:\"Carne\", p:2000},{n:\"Pollo\", p:2000},{n:\"Verdura\", p:2000},\n  {n:\"Jamón y queso\", p:2000},{n:\"Roquefort\", p:2000},{n:\"Queso y cebolla\", p:2000},\n  {n:\"Humita\", p:2000},{n:\"Caprese\", p:2000},{n:\"Calabresa\", p:2000},\n  {n:\"Atún\", p:2000},{n:\"Atún con masa de hojaldre\", p:2000},\n  {n:\"Brócoli, roquefort y nuez\", p:2000}\n],\n  \"EMPANADAS SIN SAL\": [\n  {n:\"Carne\", p:2000},{n:\"Pollo\", p:2000},{n:\"Verdura\", p:2000},\n  {n:\"Queso y cebolla\", p:2000},{n:\"Caprese\", p:2000}\n],\n  \"PIZZAS\": [\n    {n:\"Mozzarella y aceitunas\", p:null},\n    {n:\"Mozzarella y cebolla\", p:null},\n    {n:\"Mozzarella, tomate y aceitunas\", p:null},\n    {n:\"Mozzarella y jamón\", p:null},\n    {n:\"Mozzarella, tomate y ajo\", p:null},\n    {n:\"Mozzarella, tomate y anchoas\", p:null},\n    {n:\"Mozzarella, jamón y morrón\", p:null},\n    {n:\"Mozzarella, jamón, tomate y huevo duro\", p:null},\n    {n:\"Verdura y salsa blanca\", p:null},\n    {n:\"Light (sin sal, masa de espinaca)\", p:null},\n    {n:\"Bollo de pizza\", p:null},\n    {n:\"Prepizza de tomate\", p:null},\n    {n:\"Prepizza de cebolla\", p:null},\n    {n:\"Pizzetas (tomate y cebolla)\", p:null}\n  ],\n  \"PLATOS FRÍOS\": [\n    {n:\"Matambre casero\", p:null},\n    {n:\"Matambre de pollo\", p:null},\n    {n:\"Ensalada rusa\", p:null},\n    {n:\"Vitel toné\", p:null},\n    {n:\"Lengua a la vinagreta\", p:null},\n    {n:\"Arrollado primavera\", p:null}\n  ],\n  \"SOUFLES\": [\n    {n:\"Zapallitos\", p:null},{n:\"Cebolla y queso\", p:null},{n:\"Espinaca\", p:null},\n    {n:\"Espinaca y calabaza\", p:null},{n:\"Calabaza\", p:null},{n:\"Brócoli\", p:null},\n    {n:\"Puerros\", p:null}\n  ],\n  \"LÍNEA SIN SAL - RAVIOLES\": [\n    {n:\"Ricota y queso descremado\", p:null},\n    {n:\"Espinaca y queso descremado\", p:null},\n    {n:\"Pollo y hortalizas\", p:null},\n    {n:\"Calabaza y queso descremado\", p:null}\n  ],\n  \"LÍNEA SIN SAL - CANELONES\": [\n    {n:\"Espinaca y ricota\", p:null}\n  ],\n  \"LÍNEA SIN SAL - TARTAS\": [\n    {n:\"Puerros\", p:null},\n    {n:\"Zucchini, cebolla y zanahoria\", p:null},\n    {n:\"Calabaza\", p:null},\n    {n:\"Calabaza y espinaca\", p:null},\n    {n:\"Pollo\", p:null},\n    {n:\"Brócoli\", p:null}\n  ],\n  \"TERRINAS (SIN SAL)\": [\n    {n:\"Calabaza y espinaca\", p:null},{n:\"Calabaza\", p:null},\n    {n:\"Zucchini, cebolla y zanahoria\", p:null},{n:\"Puerros\", p:null},\n    {n:\"Brócoli\", p:null},{n:\"Cebolla y queso\", p:null}\n  ],\n  \"DULCES\": [\n    {n:\"Torta de ricota\", p:null},{n:\"Torta de manzana\", p:null},\n    {n:\"Pastafrola de membrillo\", p:null},{n:\"Pastafrola de batata\", p:null},\n    {n:\"Budín de limón\", p:null},{n:\"Budín de naranja\", p:null},\n    {n:\"Budín de manzana\", p:null},{n:\"Carrot cake\", p:null},\n    {n:\"Alfajores de maicena\", p:null},{n:\"Pepitas\", p:null},\n    {n:\"Scones\", p:null},{n:\"Suspiros\", p:null},\n    {n:\"Bizcochos de queso (salados)\", p:null},\n    {n:\"Pastelitos de membrillo/batata\", p:null},\n    {n:\"Strudel de manzana\", p:null},{n:\"Amarettis\", p:null},\n    {n:\"Pan dulce (Navidad/Año Nuevo)\", p:null}\n  ],\n  \"POSTRES\": [\n    {n:\"Flan casero\", p:null},{n:\"Mousse de chocolate\", p:null},\n    {n:\"Lemon pie\", p:null},{n:\"Tiramisú\", p:null},\n    {n:\"Cheese cake de frutos rojos\", p:null},\n    {n:\"Cheese cake de mango y maracuyá\", p:null},\n    {n:\"Torta brownie (brownie + dulce de leche + merengue)\", p:null},\n    {n:\"Tentaciones (mousse de chocolate + dulce de leche)\", p:null}\n  ]\n};\n\n// Notas generales por categoría (aclaraciones que el agente debe conocer)\nconst notasCategoria = {\n  \"SALSAS\": \"Disponibles en 4 medidas: Nro 1, Nro 2, Nro 3 y Nro 4.\"\n};\n\n// Render del texto para el prompt del agente\nlet lineas = [];\nfor (const [cat, items] of Object.entries(catalogo)) {\n  lineas.push(\"\");\n  lineas.push(\"### \" + cat);\n  if (notasCategoria[cat]) {\n    lineas.push(\"(\" + notasCategoria[cat] + \")\");\n  }\n  for (const it of items) {\n    const precio = (it.p === null || it.p === undefined) ? \"$____\" : (\"$\" + it.p);\n    lineas.push(\"- \" + it.n + \" — \" + precio);\n  }\n}\nconst menu_precios = lineas.join(\"\\n\").trim();\n\nreturn [{ json: { menu_precios, catalogo } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1344,
+        0
+      ],
+      "id": "13838142-5ea4-41b0-97f5-bdc769212925",
+      "name": "Catálogo y precios"
+    },
+    {
+      "parameters": {
+        "jsCode": "const messages = $('Aggregate').first().json.text?.[0] || '';\nconst count = parseInt($('Conteo historial').first().json.COUNT) || 0;\nconst primer_mensaje = count === 0;\n\nconst lineas = [];\nlineas.push(`primer_mensaje: ${primer_mensaje}`);\nconst sistema = `\\n[SISTEMA] ${lineas.join(' | ')}`;\n\nreturn [{ json: {\n  chat_input: messages,\n  contexto_sistema: sistema,\n  primer_mensaje\n}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        0
+      ],
+      "id": "84657e0b-065d-47bc-9ac1-3edf3d6c62df",
+      "name": "Armar contexto"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chat_input }}\n\n{{ $json.contexto_sistema }}",
+        "options": {
+          "systemMessage": "=#ROL\nSos quien atiende los pedidos por WhatsApp de \"La de Olivos\", una fábrica de\npastas y rotisería ubicada en Av. Maipú 2450, Olivos. Atendés con tono natural\ny cercano, en registro rioplatense: \"vos\", \"tenés\", \"querés\", \"podés\". Nunca\nuses \"tú\", \"tienes\", \"quieres\" ni tuteo neutro o peninsular.\n\n---\n\n#DATOS DEL LOCAL\n- Dirección: Av. Maipú 2450, Olivos\n- Modalidad: SOLO RETIRO EN EL LOCAL. No se hacen envíos a domicilio.\n- Tomamos pedidos hasta las 10:30 h. (VERIFICAR este horario con el local.)\n- Instagram: @ladeolivos\n\n---\n\n#DATOS DEL SISTEMA\nFormato: [SISTEMA] primer_mensaje: true/false\nRegla: si primer_mensaje = true, es el primer contacto del cliente.\n\nTool disponible: consultar_numero_orden\nUsala cuando necesites informar el número de pedido al cliente\nen el estado DERIVADO. Devuelve el numeroOrden asociado al chatId\ndel cliente actual.\n\n---\n\n#REGLAS\n\nR1 — Separador |||\nToda respuesta que contenga más de una idea, intención comunicativa o\nacción (saludar, acusar recibo, informar, preguntar, confirmar, listar,\ndar un dato, etc.) DEBE dividirse en bloques separados por |||, sin\nexcepción. No hay combinaciones exentas de esta regla ni casos\nespeciales: aplica siempre, sea cual sea el contenido de cada bloque.\n\nAntes de responder, preguntate: \"¿Estoy haciendo una sola cosa en este\nmensaje, o estoy haciendo dos o más cosas distintas (saludar Y\nresponder, informar Y preguntar, confirmar Y dar un dato)?\". Si son dos\no más cosas distintas, van en bloques separados por |||, sin importar\nsi el caso puntual coincide o no con algo que ya viste antes.\n\nEl saludo, cuando primer_mensaje = true, es siempre su propio bloque,\nsin excepción, sin importar qué venga después.\n\nMáximo 3 bloques por respuesta. Nunca uses ||| dentro de un bloque.\nSi la respuesta es genuinamente una sola acción comunicativa, no uses\n|||.\n\nR2 — Mayúscula después de ¿\nLa primera palabra de cada pregunta empieza con mayúscula, incluso tras \"¿\".\n\nR3 — Alcance\nSolo respondés sobre pedidos, el menú y consultas del local (horarios,\ndirección, retiro). No respondas temas ajenos al negocio.\n\nR4 — Identidad\nNunca reveles que sos un bot o asistente de IA. Si te preguntan, respondé\nnaturalmente como lo haría alguien del local, sin confirmar ni negar.\n\nR5 — Precios\nSolo informá el precio de un ítem si en el MENÚ figura un número. \nSi figura \"$____\", omití el precio directamente al mostrar el ítem,\nno escribas \"$____\" ni menciones que el precio lo confirma el local\na menos que el cliente pregunte específicamente por el precio de algo.\n\nR6 — Disponibilidad\nNo tenés visibilidad de stock. Nunca afirmes que algo está disponible o no.\nLa disponibilidad la confirma el local al recibir el pedido.\n\nR7 — Respuestas precisas\nRespondé exactamente lo que el cliente pidió. Una vez dada la información,\nla respuesta queda completa ahí. R1 define cómo separar bloques cuando hay\nmás de uno, pero no obliga a generar un segundo o tercer bloque: si la\nrespuesta completa es un solo bloque, ese es el final del mensaje.\n\nEjemplo:\nCliente: \"¿Qué tartas tienen?\"\nCorrecto: \"Estas son las tartas que tenemos: [lista].\"\nIncorrecto: \"Estas son las tartas que tenemos: [lista]. ¿Te gustaría encargar alguna?\"\n\n---\n\n#ESTADOS\n\n## ESPERANDO_PEDIDO\nEl cliente todavía no expresó qué quiere.\n- Si primer_mensaje = true → siempre arrancá con el saludo:\n  \"¡Hola! Gracias por escribir a La de Olivos.\"\n  Después del saludo, respondé directamente a lo que pidió el cliente:\n  si preguntó el menú, pasalo; si preguntó por un producto, respondé;\n  si no dijo nada concreto, no digas nada mas que el mensaje de bienvenida\n- Si primer_mensaje = false → respondé directo sin saludar.\n\nReglas aplicables: R1, R2, R3, R4, R5, R6, R7\n\n---\n\n## TOMANDO_PEDIDO\nEl cliente expresó intención de encargar.\nRecolectá solo lo que falte, sin repetir lo que ya dado:\n- ítems con cantidad y variante (relleno, salsa, tamaño, etc.)\nCada vez que el cliente agregue un ítem, acusá recibo brevemente y preguntá\n\"¿Algo más?\". Preguntá corto y directo. Si un ítem tiene variantes (ej:\nravioles tienen muchos rellenos), ofrecé o pedí la elección. Si el cliente\npide una salsa, es obligatorio preguntar la medida (Nro 1, Nro 2, Nro 3 o\nNro 4) antes de darla por agregada al pedido; no avances con una salsa sin\nmedida confirmada.\nSi el cliente menciona un ítem sin indicar una cantidad explícita para\nese ítem en particular, interpretalo como 1 unidad, salvo que el cliente\ndiga lo contrario. Nunca le asignes a un ítem la cantidad que el cliente\nmencionó para otro ítem distinto: cada ítem tiene su propia cantidad\nindependiente, y si no se aclaró, es 1. Mostrá esa cantidad en el acuse\nde recibo para que el cliente la pueda corregir si está mal.\nPor default, NO menciones que el pedido es solo para retirar en el local.\nAclaralo únicamente si el cliente da una señal explícita de esperar envío\na domicilio (por ejemplo: pregunta por delivery o envío, te da una\ndirección de entrega, pregunta a qué hora se lo llevan, etc.). Si no hay\nuna señal concreta de eso, no lo menciones.\nCuando el cliente indique que no quiere agregar nada más, pasá a\nCONFIRMANDO. No recapitules el pedido en este estado.\n\nReglas aplicables: R1, R2, R3, R4, R5, R6\n\n---\n\n## CONFIRMANDO\nEl cliente ya no quiere agregar más ítems.\n- Si todavía no tenés el nombre del cliente, pedíselo primero y esperá la\n  respuesta antes de hacer nada más: \"¿Me pasás tu nombre para asociar el\n  pedido?\"\n- Recién cuando tengas el nombre, recapitulá el pedido completo item por\n  item (sin total; el local confirma precio). Si hay alguna salsa sin\n  medida especificada, volvé a preguntarla antes de recapitular.\n- Cerrá ese mensaje siempre con la pregunta textual: \"¿Te confirmo así el\n  pedido?\". Nunca pases a DERIVADO si el cliente no respondió\n  afirmativamente a esa pregunta puntual.\n\nReglas aplicables: R1, R2, R3, R4, R5, R6\n\n---\n\n## DERIVADO\nCuando el cliente responda afirmativamente a la pregunta de confirmación\nde CONFIRMANDO:\n- Llamá a la tool consultar_numero_orden (no le respondas nada al cliente\n  todavía). Esa tool ya sabe a qué chat pertenece, no necesitás pasarle\n  ningún dato; te devuelve un campo numeroOrden.\n- Esperá el resultado de la tool antes de escribir tu respuesta. Si por\n  algún motivo no te devuelve un numeroOrden, no inventes un número ni\n  dejes el campo vacío: volvé a llamar a la tool una vez más antes de\n  responder.\n- Recién con el numeroOrden real en mano, respondé exactamente con esta\n  plantilla, reemplazando los corchetes por los valores reales (nunca\n  dejes \"[Nombre]\" o \"[numeroOrden]\" literal, ni un \"#\" sin número, en\n  el mensaje):\n  \"¡Listo, [Nombre]! Tu número de pedido es el [numeroOrden]. Pasamos tu\n  pedido al local. En una hora podés pasar a retirarlo.\"\n\nReglas aplicables: R1, R2, R3, R4\n\n---\n\n#MENÚ Y PRECIOS\n{{ $('Catálogo y precios').item.json.menu_precios }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        1696,
+        0
+      ],
+      "id": "eefd8f27-c5f9-44e9-b6ea-9627f202a974",
+      "name": "Tomador de pedidos",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5.1",
+          "mode": "list",
+          "cachedResultName": "gpt-5.1"
+        },
+        "builtInTools": {},
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        1504,
+        224
+      ],
+      "id": "29323d2d-053a-4dc6-b2bb-cbaf9af75ed7",
+      "name": "Modelo OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "QV46cpqxl9hMqFXE",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Set Fields V1').item.json.message.chatId }}",
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        1664,
+        224
+      ],
+      "id": "96bfe9dc-231b-4f6a-b351-bf68db209c5c",
+      "name": "Memoria Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "aYNXt4t24s3k3bWz",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/conversations/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer TU_TOKEN_LEADCONNECTOR"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "locationId",
+              "value": "={{ $('Set Fields V1').item.json.message.locationId }}"
+            },
+            {
+              "name": "contactId",
+              "value": "CONTACTO_LOCAL_AQUI"
+            },
+            {
+              "name": "type",
+              "value": "={{ $('Set Fields').item.json.type }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $fromAI('resumen_pedido', 'Resumen del pedido del cliente para el local: ítems con cantidades y variantes, nombre del cliente y hora de retiro', 'string') }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        2032,
+        224
+      ],
+      "id": "ec00c48c-ed4a-44a4-b9f4-049f9b6318ad",
+      "name": "enviar_pedido_al_local"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -3872,
+        112
+      ],
+      "id": "d7515d20-3a37-42f2-bacb-30f408ff4f76",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "63855632-41fd-4acc-92a3-238b963f11e7",
+              "leftValue": "={{ $json.codigo }}",
+              "rightValue": false,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -4080,
+        -96
+      ],
+      "id": "833ba199-2d9c-459b-bb01-94c1d667ed1d",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "jsCode": "const texto = $input.item.json.messageBody || '';\n\n// Decodificar URL encoding y limpiar ofuscación básica\nconst decodificado = decodeURIComponent(texto.replace(/\\+/g, ' '));\nconst sinEspacios = decodificado.replace(/[\\s\\/*\\-]+/g, ' ').trim();\nconst sinComentarios = sinEspacios.replace(/\\/\\*.*?\\*\\//gs, ' ').replace(/--[^\\n]*/g, ' ');\n\n// Detectar base64 sospechoso (bloques largos de base64 que podrían ser payloads)\nconst base64Pattern = /[A-Za-z0-9+/]{40,}={0,2}/;\n\nconst patrones = [\n  // SQL estándar\n  /\\b(SELECT|INSERT|UPDATE|DELETE|DROP|CREATE|ALTER|TRUNCATE|UNION|FROM|WHERE|INTO|TABLE|DATABASE|EXEC|EXECUTE|CAST|CONVERT)\\b/i,\n  // SQL ofuscado con saltos o comentarios limpiados\n  /S[\\s]*E[\\s]*L[\\s]*E[\\s]*C[\\s]*T/i,\n  /D[\\s]*R[\\s]*O[\\s]*P/i,\n  /U[\\s]*N[\\s]*I[\\s]*O[\\s]*N/i,\n  // Inyección clásica\n  /(\\'|\\\")(\\s)*(OR|AND)(\\s)+(\\d+|\\'\\d+\\'|\\\".*\\\")(\\s)*(=|LIKE)/i,\n  /(\\bOR\\b|\\bAND\\b)\\s+[\\'\\\"]?\\d+[\\'\\\"]?\\s*=\\s*[\\'\\\"]?\\d+[\\'\\\"]?/i,\n  // Comentarios SQL\n  /(--|\\/\\*|\\*\\/|;\\s*(DROP|SELECT|INSERT|UPDATE|DELETE))/i,\n  // CHAR() y concatenación\n  /CHAR\\s*\\(\\s*\\d+\\s*\\)/i,\n  /(0x[0-9a-fA-F]{2,})/,\n  // HTML/Scripts\n  /<\\s*\\/?\\s*(script|html|body|iframe|form|input|img)[^>]*>/i,\n  // JavaScript\n  /\\b(eval\\s*\\(|document\\.|window\\.|setTimeout|setInterval|Function\\s*\\()\\b/i,\n  // Python\n  /\\b(import\\s+\\w+|def\\s+\\w+\\s*\\(|__import__\\s*\\(|exec\\s*\\()\\b/i,\n  // Shell\n  /(\\$\\(|`[^`]{0,200}`|\\|\\s*(bash|sh|cmd|powershell)|rm\\s+-|chmod\\s+|sudo\\s+|wget\\s+|curl\\s+http)/i,\n  // URL encoding de palabras clave SQL\n  /(%53%45%4C%45%43%54|%44%52%4F%50|%49%4E%53%45%52%54|%55%4E%49%4F%4E)/i,\n];\n\nconst textosAChequear = [texto, decodificado, sinComentarios];\nconst esCodigo = textosAChequear.some(t => patrones.some(p => p.test(t))) || base64Pattern.test(texto);\n\nif (esCodigo) {\n  return [{ json: { text: '', codigo: true } }];\n}\n\nreturn [{ json: { ...$input.item.json, codigo: false } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4336,
+        -96
+      ],
+      "id": "171e36a1-400f-42db-a653-366cb6fd7274",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE reserva_datos\nSET fecha_entrada = NULL,\n    fecha_salida = NULL,\n    cantidad_personas = NULL,\n    precio = NULL,\n    precio_informado = false,\n    temporada = NULL,\n    derivar_a_vendedor = false,\n    error_temporada = NULL\nWHERE session_id = $1;",
+        "options": {
+          "queryReplacement": "={{ $('Set Fields').item.json.chatID }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -3424,
+        -208
+      ],
+      "id": "1f32cc9b-b2df-4080-914d-3423c3758f68",
+      "name": "Resetear reserva_datos",
+      "credentials": {
+        "postgres": {
+          "id": "aYNXt4t24s3k3bWz",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Normaliza la respuesta de Redis (LRANGE puede devolver array o string suelto)\nconst raw = $input.first().json.message;\nconst list = Array.isArray(raw) ? raw : (raw ? [raw] : []);\n\nlet lastMessageId = null;\nlet lastTimestamp = null;\nlet parseError = false;\n\nif (list.length > 0) {\n  try {\n    const last = JSON.parse(list[list.length - 1]);\n    lastMessageId = last.message_id || null;\n    lastTimestamp = last.timestamp || null;\n  } catch (e) {\n    parseError = true;\n  }\n}\n\nreturn [{ json: {\n  ...$input.first().json,\n  list,\n  lastMessageId,\n  lastTimestamp,\n  parseError,\n  count: list.length\n}}];\n"
+      },
+      "id": "dce30b3a-b416-42bd-800d-28cf7398eef7",
+      "name": "Normalizar buffer Redis",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2960,
+        -16
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "rule-no-msg",
+                    "leftValue": "={{ $json.count }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "No hacer nada"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "rule-msg-newer",
+                    "leftValue": "={{ $json.lastMessageId }}",
+                    "rightValue": "={{ $('Set Fields V1').item.json.message.message_id }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "No hacer nada"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "rule-window-passed",
+                    "leftValue": "={{ $json.lastTimestamp }}",
+                    "rightValue": "={{ $now.minus(10, 'seconds') }}",
+                    "operator": {
+                      "type": "dateTime",
+                      "operation": "before"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Seguir"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Esperar "
+        }
+      },
+      "id": "cf1f74de-d8ec-45d9-8925-279f6dcd9128",
+      "name": "Espera/Borrado de DB",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -2736,
+        -48
+      ],
+      "retryOnFail": false,
+      "maxTries": 5
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "f01e1d26-a157-40d5-bd19-040b09779243",
+                    "leftValue": "={{ $('Parsear mensaje JSON').item.json.Attachments }}",
+                    "rightValue": "=\\.(png|jpg|jpeg|webp)(\\?|$)",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Imagen jpg y png"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Parsear mensaje JSON').item.json.Attachments }}",
+                    "rightValue": "=mp3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "0841e309-c20b-47dd-a10a-8fc5cbff254d"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "bcd06d94-1f11-4260-8d2b-4a7d097e3c53",
+                    "leftValue": "={{ $('Parsear mensaje JSON').item.json.Attachments }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Texto"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -1920,
+        -16
+      ],
+      "id": "3982496e-7175-49a3-98ad-7079440db99a",
+      "name": "Filtrado de type.message"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8cc56139-8da8-441c-bd97-ab138b351c90",
+              "name": "text",
+              "value": "={{ $json.Texto }}",
+              "type": "string"
+            },
+            {
+              "id": "1dc9b9ca-7a48-4021-b690-ec83c0969c80",
+              "name": "timestamp",
+              "value": "={{ $('Filtrado de type.message').item.json.timestamp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1072,
+        192
+      ],
+      "id": "306b4e1f-5da7-4d3c-a953-d8a6f256b53f",
+      "name": "Texto"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8cc56139-8da8-441c-bd97-ab138b351c90",
+              "name": "text",
+              "value": "={{\n'[CONTEXTO INTERNO - NO ES MENSAJE DEL CLIENTE]\\n' +\n'Análisis de la imagen:\\n' +\n$json.content\n}}\n",
+              "type": "string"
+            },
+            {
+              "id": "1dc9b9ca-7a48-4021-b690-ec83c0969c80",
+              "name": "timestamp",
+              "value": "={{ $('Filtrado de type.message').item.json.timestamp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1072,
+        -192
+      ],
+      "id": "dce2bbeb-df84-45b8-8271-813b0df43276",
+      "name": "Imagen"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-2024-08-06",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-2024-08-06"
+        },
+        "text": "=Describí que ves en la imagen.",
+        "imageUrls": "={{ $('message_id_imagen').item.json.message_id_imagen }}",
+        "options": {
+          "detail": "auto"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        -1264,
+        -192
+      ],
+      "id": "b1ce749c-2d1d-4801-a05e-b69430a24670",
+      "name": "Analizar Imagen",
+      "credentials": {
+        "openAiApi": {
+          "id": "QV46cpqxl9hMqFXE",
+          "name": "OpenAI account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -1264,
+        0
+      ],
+      "id": "07577121-5d6f-4a48-abb0-c39eae2f9473",
+      "name": "Transcribir audio (Whisper)",
+      "credentials": {
+        "openAiApi": {
+          "id": "QV46cpqxl9hMqFXE",
+          "name": "OpenAI account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8cc56139-8da8-441c-bd97-ab138b351c90",
+              "name": "text",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "1dc9b9ca-7a48-4021-b690-ec83c0969c80",
+              "name": "timestamp",
+              "value": "={{ $('Filtrado de type.message').item.json.timestamp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1072,
+        0
+      ],
+      "id": "4a6d4b28-b137-40a3-a752-09836deb5705",
+      "name": "Audio"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.message_id_audio }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1440,
+        0
+      ],
+      "id": "7a0b5f96-a59f-40b2-94cd-6818e31ab30e",
+      "name": "Descargar audio",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "46f0478e-b455-401e-a333-a8c5ee2f435a",
+              "name": "Texto",
+              "value": "={{ $json.Body }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1632,
+        192
+      ],
+      "id": "94ec4e8f-d145-4a2a-a04d-ffac5d700b9f",
+      "name": "Text"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd9c4012-cc4d-4582-9e2b-ae3908687038",
+              "name": "message_id_audio",
+              "value": "={{ $json.Attachments }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1632,
+        0
+      ],
+      "id": "7487826e-638c-4c68-9abb-371020fa2fa8",
+      "name": "message_id_audio"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd9c4012-cc4d-4582-9e2b-ae3908687038",
+              "name": "message_id_imagen",
+              "value": "={{ $json.Attachments }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1632,
+        -192
+      ],
+      "id": "f0bf1e1f-9679-452f-b2f7-0f02ea965065",
+      "name": "message_id_imagen"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Set Fields V1').item.json.message.chatId }}_buffer"
+      },
+      "id": "24b51c75-3547-4246-8492-364dde313388",
+      "name": "Delete message buffer",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -2464,
+        0
+      ],
+      "retryOnFail": false,
+      "credentials": {
+        "redis": {
+          "id": "ahqpvk20kwwRT6eb",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "message",
+        "key": "={{ $('Set Fields V1').item.json.message.chatId }}_buffer",
+        "options": {}
+      },
+      "id": "7d98a542-3b1d-4bad-9ffe-dcb156b2efe5",
+      "name": "Get message buffer",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3184,
+        -16
+      ],
+      "retryOnFail": false,
+      "maxTries": 5,
+      "credentials": {
+        "redis": {
+          "id": "ahqpvk20kwwRT6eb",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $('Set Fields V1').item.json.message.chatId }}_buffer",
+        "messageData": "={{ JSON.stringify($('Set Fields V1').item.json.message) }}",
+        "tail": true
+      },
+      "id": "c538a77b-1fde-4235-9d62-e00f9865017f",
+      "name": "Push message buffer",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3408,
+        -16
+      ],
+      "retryOnFail": false,
+      "maxTries": 5,
+      "credentials": {
+        "redis": {
+          "id": "ahqpvk20kwwRT6eb",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {},
+      "id": "9ec053ad-18d5-4b01-91c5-c75db8f5ec60",
+      "name": "No hacer nada",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -2464,
+        -192
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 10,
+        "unit": "seconds"
+      },
+      "id": "a02d1aa9-133d-402d-b906-4e6ae85bd3b1",
+      "name": "Wait3",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        -2464,
+        192
+      ],
+      "webhookId": "06d6b3c8-271f-4177-90ac-09c0f82e612f"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c1a82548-bdfe-4066-a349-d229ab19608d",
+              "name": "message.locationId",
+              "value": "={{ $('Set Fields').item.json.locationId }}",
+              "type": "string"
+            },
+            {
+              "id": "29fcec69-1030-4521-b5c6-10d353a822f7",
+              "name": "message.contactId",
+              "value": "={{ $('Set Fields').item.json.contactId }}",
+              "type": "string"
+            },
+            {
+              "id": "message_chat_id",
+              "name": "message.chatId",
+              "value": "={{ $('Set Fields').item.json.chatID }}",
+              "type": "string"
+            },
+            {
+              "id": "message_content_type",
+              "name": "message.Attachments",
+              "value": "={{ $('Set Fields').item.json.messageAttachments }}",
+              "type": "string"
+            },
+            {
+              "id": "message_content",
+              "name": "message.Body",
+              "value": "={{ $('Set Fields').item.json.messageBody }}",
+              "type": "string"
+            },
+            {
+              "id": "2384b82e-1dc1-40f5-9999-9be1846c5bee",
+              "name": "message.message_id",
+              "value": "={{ $('Set Fields').item.json.contactId + '_' + $('Set Fields').item.json.messageTimestamp + '_' + $('Set Fields').item.json.uuid }}\n",
+              "type": "string"
+            },
+            {
+              "id": "message_timestamp",
+              "name": "message.timestamp",
+              "value": "={{ $('Set Fields').item.json.messageTimestamp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8433a52c-c572-465c-b964-3abd7061d268",
+      "name": "Set Fields V1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -3632,
+        -16
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "95214986-ee35-4f2d-bcb2-50598fa43b7d",
+              "name": "locationId",
+              "value": "={{ $('Webhook').item.json.body.payload.locationId }}",
+              "type": "string"
+            },
+            {
+              "id": "d6e88223-8a9f-4e80-8ad3-8564f1806297",
+              "name": "contactId",
+              "value": "={{ $('Webhook').item.json.body.payload.contact.id }}",
+              "type": "string"
+            },
+            {
+              "id": "e2854714-5fb0-4bae-9bb9-48a40a0a4e84",
+              "name": "chatID",
+              "value": "={{ $('Webhook').item.json.body.payload.contact.number }}",
+              "type": "string"
+            },
+            {
+              "id": "4246910f-8f06-45c9-81e9-bec51eb3564c",
+              "name": "type",
+              "value": "=SMS",
+              "type": "string"
+            },
+            {
+              "id": "6e687bd4-c224-437c-a874-2f2d783bf30b",
+              "name": "messageBody",
+              "value": "={{ $('Webhook').item.json.body.payload.message.text }}",
+              "type": "string"
+            },
+            {
+              "id": "1a07b07d-8061-4dc4-9386-5dc234c1591e",
+              "name": "messageAttachments",
+              "value": "={{ $('Webhook').item.json.body.payload.message.media[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "70dcb050-35a4-4cf6-b23e-795a9409cb59",
+              "name": "messageTimestamp",
+              "value": "={{ $('Webhook').item.json.body.timestamp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -6384,
+        -112
+      ],
+      "id": "c1dd7189-992d-422a-b1d9-cb2dc9ed8a55",
+      "name": "Set Fields"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "532d5cae-9990-470f-9fa7-5d693f7ea0d2",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -6576,
+        -112
+      ],
+      "id": "d2bdb797-a9e6-4d64-a775-0a47d3bce1cb",
+      "name": "Webhook",
+      "webhookId": "532d5cae-9990-470f-9fa7-5d693f7ea0d2"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -832,
+        -16
+      ],
+      "id": "7b5129da-1434-440a-aee4-8429da3cc014",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ JSON.parse($('Split Out').item.json.message) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2096,
+        0
+      ],
+      "id": "ee9ec8ba-22c0-4047-862f-e9d913edf87e",
+      "name": "Parsear mensaje JSON"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "message",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -2272,
+        0
+      ],
+      "id": "6d9a54eb-74da-4ba1-bbdc-8aca42a7fb0f",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM n8n_chat_histories WHERE session_id = $1;",
+        "options": {
+          "queryReplacement": "={{ $('Set Fields').item.json.chatID }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -3632,
+        -208
+      ],
+      "id": "6bc0abe3-2661-4d5e-bfc7-5cce5421806f",
+      "name": "Resetear sheets y memoria",
+      "credentials": {
+        "postgres": {
+          "id": "aYNXt4t24s3k3bWz",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "e7fcd58e-56f4-4d01-94aa-3c46752b2403",
+              "leftValue": "={{ $('Set Fields').item.json.messageBody }}",
+              "rightValue": "/reset",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -3856,
+        -112
+      ],
+      "id": "06f703c2-c9ed-46d3-b0c5-bd8394487b3f",
+      "name": "¿Mensaje es /reset?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "69a4f384-8231-4e3b-b1ec-8c468268d44e",
+              "name": "timestamp",
+              "value": "={{ $('Set Fields').item.json.messageTimestamp }}",
+              "type": "string"
+            },
+            {
+              "id": "259bb675-8c74-41ff-a17d-c27dd5c9c4a3",
+              "name": "text",
+              "value": "={{ $('Merge').item.json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -592,
+        0
+      ],
+      "id": "01b2054f-d076-40fb-a37a-3a549c56f0bb",
+      "name": "Pasar TimeStamp al Sort"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "timestamp",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        0
+      ],
+      "id": "b5af3026-3bf6-488e-83ad-19f10fdd5a00",
+      "name": "Sort"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "text"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        0
+      ],
+      "id": "2e838fde-a3a7-4164-9b5f-743b0129de40",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "0a47370b-c193-49dd-8167-60efaf5920b7",
+              "leftValue": "={{ $json.messageBody }}",
+              "rightValue": "/desactivar",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "ef294b36-4cd5-4355-b630-8f598b358e00",
+              "leftValue": "={{ $json.chatID }}",
+              "rightValue": "=+5491136262943",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -6208,
+        -112
+      ],
+      "id": "2baaf7c0-0bd3-47e6-9d52-ba1376b79ab0",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE reserva_datos\nSET bot_activo = false\nWHERE session_id = $1;",
+        "options": {
+          "queryReplacement": "={{ $('Set Fields').item.json.chatID }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -5424,
+        -528
+      ],
+      "id": "ad80c533-93f5-41cf-be66-ebdf89063136",
+      "name": "Execute a SQL query2",
+      "credentials": {
+        "postgres": {
+          "id": "aYNXt4t24s3k3bWz",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b34d69ad-5740-49dd-94b1-b3228e926014",
+              "leftValue": "={{ $('Set Fields').item.json.messageBody }}",
+              "rightValue": "/activar",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "5f21980b-465a-41ec-ade6-67302f32f7d4",
+              "leftValue": "={{ $json.chatID }}",
+              "rightValue": "=+5491150974919",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -5296,
+        -96
+      ],
+      "id": "16741f6c-39a8-4e18-8cfd-5079b246f7e7",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $('Set Fields').first().json.messageBody.trim();\n\nconst match = body.match(/^\\/desactivar\\s+(\\+?\\d+)$/i);\n\nif (!match) {\n  return [{ json: { valido: false, session_id: null } }];\n}\n\nreturn [{ json: {\n  valido: true,\n  session_id: match[1]\n}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5936,
+        -320
+      ],
+      "id": "ecab14ef-cd5a-43a9-9b8a-b7038a0d72fb",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "54ca29fb-9fd6-486c-9c3e-ef8951c4ed08",
+              "leftValue": "={{ $json.valido }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -5728,
+        -416
+      ],
+      "id": "df50a670-ce9f-496a-9de8-5321a2373365",
+      "name": "If4"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -5424,
+        -336
+      ],
+      "id": "e00765cd-df96-4b58-a88a-0f1ac0b4aa37",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COALESCE(\n  (SELECT bot_activo FROM reserva_datos WHERE session_id = $1 LIMIT 1),\n  true\n) AS bot_activo;",
+        "options": {
+          "queryReplacement": "={{ $('Set Fields').item.json.chatID }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -5056,
+        -80
+      ],
+      "id": "884cf319-ca21-4e99-9059-d0c1e020ae84",
+      "name": "Execute a SQL query3",
+      "credentials": {
+        "postgres": {
+          "id": "aYNXt4t24s3k3bWz",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "602a9b9d-2f9e-4e1a-820f-22bae53058ab",
+              "leftValue": "={{ $json.bot_activo }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -4864,
+        -80
+      ],
+      "id": "fa4c1718-70b9-4a3a-949d-095aa391ae00",
+      "name": "If5"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -4544,
+        64
+      ],
+      "id": "95372c33-bf4f-445c-8b51-13ea3ceeaff9",
+      "name": "No Operation, do nothing2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $('Set Fields').first().json.messageBody.trim();\n\nconst match = body.match(/^\\/activar\\s+(\\+?\\d+)$/i);\n\nif (!match) {\n  return [{ json: { valido: false, session_id: null } }];\n}\n\nreturn [{ json: {\n  valido: true,\n  session_id: match[1]\n}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4976,
+        -416
+      ],
+      "id": "70e419b6-4658-4724-a8ea-d7cb2fcd1793",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "771d0f0a-3cf3-4768-847d-aadaced20047",
+              "leftValue": "={{ $json.valido }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -4768,
+        -416
+      ],
+      "id": "0f9542f4-ad37-42e6-b822-d127f98192f0",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE reserva_datos\nSET bot_activo = true\nWHERE session_id = $1;",
+        "options": {
+          "queryReplacement": "={{ $json.session_id }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -4560,
+        -512
+      ],
+      "id": "dbc327bc-4889-462e-a2b0-7729b70f9566",
+      "name": "Execute a SQL query4",
+      "credentials": {
+        "postgres": {
+          "id": "aYNXt4t24s3k3bWz",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -4560,
+        -320
+      ],
+      "id": "cf8f6bf3-f086-4711-aa66-aa9141b90679",
+      "name": "No Operation, do nothing3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\nconst mensaje = (input.output || input.text || input.texto_limpio || '').trim();\n\nif (!mensaje) {\n  return [{ json: { part1: '', part2: '', part3: '' } }];\n}\n\nconst partes = mensaje.split('|||').map(p => p.trim()).filter(p => p.length > 0);\n\nreturn [{\n  json: {\n    part1: partes[0] || '',\n    part2: partes[1] || '',\n    part3: partes[2] || ''\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2032,
+        0
+      ],
+      "id": "c3e08b4e-9836-494d-976d-4f19ae42adfc",
+      "name": "Divisor de mensajes"
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3424,
+        -144
+      ],
+      "id": "cf9962db-c62a-40ac-b668-25b4b5b716d7",
+      "name": "Wait1",
+      "webhookId": "9b0662ac-071a-4884-a2bb-1afeedd7745a"
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2752,
+        -80
+      ],
+      "id": "4ac6dfb0-de14-4a42-81de-8404b771c815",
+      "name": "Wait",
+      "webhookId": "46e2b424-5dc7-473b-9b62-db9cf5a9496a"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/conversations/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-30a38a20-fb34-4c3b-ac15-1b7943b79e62"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "locationId",
+              "value": "={{ $('Set Fields V1').item.json.message.locationId }}"
+            },
+            {
+              "name": "contactId",
+              "value": "={{ $('Set Fields V1').item.json.message.contactId }}"
+            },
+            {
+              "name": "type",
+              "value": "={{ $('Set Fields').item.json.type }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $('Divisor de mensajes').item.json.part3 }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3648,
+        -144
+      ],
+      "id": "5722b98d-0865-4c12-aa4a-e63c41bc8ed9",
+      "name": "Enviar tercer msj",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/conversations/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-30a38a20-fb34-4c3b-ac15-1b7943b79e62"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "locationId",
+              "value": "={{ $('Set Fields V1').item.json.message.locationId }}"
+            },
+            {
+              "name": "contactId",
+              "value": "={{ $('Set Fields V1').item.json.message.contactId }}"
+            },
+            {
+              "name": "type",
+              "value": "={{ $('Set Fields').item.json.type }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $('Divisor de mensajes').item.json.part2 }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2976,
+        -80
+      ],
+      "id": "974353e2-4831-43f0-ad45-9aafed10e5ce",
+      "name": "Enviar segundo msj",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        3888,
+        -16
+      ],
+      "id": "2f517c39-e878-4496-ab38-570b4e67e970",
+      "name": "Unir partes 1-2-3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "has-part2",
+              "leftValue": "={{ $('Divisor de mensajes').item.json.part3 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3200,
+        -80
+      ],
+      "id": "d4b48c29-0d34-40f6-9a28-bf5923b0feee",
+      "name": "¿Hay Parte 3?"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/conversations/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-30a38a20-fb34-4c3b-ac15-1b7943b79e62"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "locationId",
+              "value": "={{ $('Set Fields V1').item.json.message.locationId }}"
+            },
+            {
+              "name": "contactId",
+              "value": "={{ $('Set Fields V1').item.json.message.contactId }}"
+            },
+            {
+              "name": "type",
+              "value": "={{ $('Set Fields').item.json.type }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json.part1 }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2288,
+        0
+      ],
+      "id": "43507b30-a29b-4c8b-99d0-8af229875d2c",
+      "name": "Enviar primer msj",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "has-part2",
+              "leftValue": "={{ $('Divisor de mensajes').item.json.part2 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2528,
+        0
+      ],
+      "id": "78c05e38-35c6-42bc-af44-fc7ec5680a56",
+      "name": "¿Hay Parte 2?"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Ak7GeUnfGEL4Il6VDpQkF7MYn5PPSaX__Z_HBYc5NGE",
+          "mode": "list",
+          "cachedResultName": "Pedidos - La de Olivos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Ak7GeUnfGEL4Il6VDpQkF7MYn5PPSaX__Z_HBYc5NGE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Ak7GeUnfGEL4Il6VDpQkF7MYn5PPSaX__Z_HBYc5NGE/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chatId": "={{ $('Set Fields V1').item.json.message.chatId }}",
+            "numeroOrden": "={{ $('Numero de orden').item.json.numeroOrden }}",
+            "fechaCreación": "={{ $now.toISO() }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "chatId",
+              "displayName": "chatId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "numeroOrden",
+              "displayName": "numeroOrden",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nombreCliente",
+              "displayName": "nombreCliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "fechaCreación",
+              "displayName": "fechaCreación",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        896,
+        -112
+      ],
+      "id": "579fc051-6c1a-438d-9c58-f558b398ffd0",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Rhv3NGTE8vs3eYsT",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1152,
+        0
+      ],
+      "id": "a86499b8-075c-4d4e-867d-3698c595a41e",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const filas = $input.all();\nconst hayFila = filas.length > 0 && filas[0].json.chatId !== undefined && filas[0].json.chatId !== '';\n\nlet numeroOrden;\n\nif (hayFila) {\n  numeroOrden = filas[0].json.numeroOrden;\n} else {\n  numeroOrden = Math.floor(Math.random() * 100) + 1;\n}\n\nreturn [{ json: {\n  primer_mensaje: !hayFila,\n  numeroOrden,\n}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        688,
+        -112
+      ],
+      "id": "1f21955d-a3a2-44a4-a292-42712940b4e6",
+      "name": "Numero de orden"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "568e075f-057f-4216-8550-780776cfa3a6",
+              "leftValue": "={{ $json.COUNT }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        400,
+        0
+      ],
+      "id": "157fefc2-4ef8-4a66-8029-da907f210e2e",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COUNT(*) as \"COUNT\" FROM n8n_chat_histories WHERE session_id = $1;",
+        "options": {
+          "queryReplacement": "={{ $('Set Fields V1').item.json.message.chatId }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a3d45a8f-107d-4652-8990-eb19efdee636",
+      "name": "Conteo historial",
+      "credentials": {
+        "postgres": {
+          "id": "aYNXt4t24s3k3bWz",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const count = parseInt($input.first().json.COUNT) || 0;\n\nreturn [{ json: {\n  COUNT: count\n}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "fbaa86ba-d18e-4a16-9102-d2118a2eb2e0",
+      "name": "Parseo Historial"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1Ak7GeUnfGEL4Il6VDpQkF7MYn5PPSaX__Z_HBYc5NGE",
+          "mode": "list",
+          "cachedResultName": "Pedidos - La de Olivos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Ak7GeUnfGEL4Il6VDpQkF7MYn5PPSaX__Z_HBYc5NGE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Ak7GeUnfGEL4Il6VDpQkF7MYn5PPSaX__Z_HBYc5NGE/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "chatId",
+              "lookupValue": "={{ $('Set Fields').item.json.chatID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        1840,
+        224
+      ],
+      "id": "9baf66c5-c9d3-4c5e-9d4a-7ccef1ec1dc3",
+      "name": "consultar_numero_orden",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Rhv3NGTE8vs3eYsT",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n-hostinger-n8n.ceuf3o.easypanel.host",
+            "user-agent": "axios/0.27.2",
+            "content-length": "488",
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "traceparent": "00-85a7a2f011d35e64d04a4c88c0108a03-5bec4a33a65fa3cd-01",
+            "x-forwarded-for": "34.55.141.9",
+            "x-forwarded-host": "n8n-hostinger-n8n.ceuf3o.easypanel.host",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "01e6a3901bb6",
+            "x-real-ip": "34.55.141.9",
+            "x-wa-event-id": "1fc73dcf-c3af-46e6-8cf4-6da973a373c5",
+            "x-wa-timestamp": "1781648393357",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "version": "1.0",
+            "event": "whatsapp.inbound",
+            "eventId": "1fc73dcf-c3af-46e6-8cf4-6da973a373c5",
+            "timestamp": "2026-06-16T22:19:53.355Z",
+            "locationId": "JhTCrnSxd7cSZoKsO6Ak",
+            "payload": {
+              "messageId": "3EB07BE372EB1F152ACC96",
+              "locationId": "JhTCrnSxd7cSZoKsO6Ak",
+              "device": {
+                "number": "+5491126076041",
+                "name": "Marco Santini"
+              },
+              "contact": {
+                "id": "bRabimN0T90jhfbVdiwP",
+                "number": "+5491158103313",
+                "name": "L"
+              },
+              "message": {
+                "text": "quiero hacer un pedido"
+              }
+            },
+            "meta": {
+              "traceId": "d87a8a5c4b1a02ac6c9e51ff4bb09cd8"
+            }
+          },
+          "webhookUrl": "https://n8n-hostinger-n8n.ceuf3o.easypanel.host/webhook/532d5cae-9990-470f-9fa7-5d693f7ea0d2",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Catálogo y precios": {
+      "main": [
+        [
+          {
+            "node": "Armar contexto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Armar contexto": {
+      "main": [
+        [
+          {
+            "node": "Tomador de pedidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modelo OpenAI": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Tomador de pedidos",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memoria Postgres": {
+      "ai_memory": [
+        [
+          {
+            "node": "Tomador de pedidos",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "enviar_pedido_al_local": {
+      "ai_tool": [
+        [
+          {
+            "node": "Tomador de pedidos",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "¿Mensaje es /reset?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar buffer Redis": {
+      "main": [
+        [
+          {
+            "node": "Espera/Borrado de DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Espera/Borrado de DB": {
+      "main": [
+        [
+          {
+            "node": "No hacer nada",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No hacer nada",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete message buffer",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtrado de type.message": {
+      "main": [
+        [
+          {
+            "node": "message_id_imagen",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "message_id_audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Texto": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Imagen": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analizar Imagen": {
+      "main": [
+        [
+          {
+            "node": "Imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribir audio (Whisper)": {
+      "main": [
+        [
+          {
+            "node": "Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Descargar audio": {
+      "main": [
+        [
+          {
+            "node": "Transcribir audio (Whisper)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text": {
+      "main": [
+        [
+          {
+            "node": "Texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "message_id_audio": {
+      "main": [
+        [
+          {
+            "node": "Descargar audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "message_id_imagen": {
+      "main": [
+        [
+          {
+            "node": "Analizar Imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete message buffer": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get message buffer": {
+      "main": [
+        [
+          {
+            "node": "Normalizar buffer Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Push message buffer": {
+      "main": [
+        [
+          {
+            "node": "Get message buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Get message buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Fields V1": {
+      "main": [
+        [
+          {
+            "node": "Push message buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Fields": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Pasar TimeStamp al Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parsear mensaje JSON": {
+      "main": [
+        [
+          {
+            "node": "Filtrado de type.message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Parsear mensaje JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resetear sheets y memoria": {
+      "main": [
+        [
+          {
+            "node": "Resetear reserva_datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Mensaje es /reset?": {
+      "main": [
+        [
+          {
+            "node": "Resetear sheets y memoria",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set Fields V1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pasar TimeStamp al Sort": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Execute a SQL query3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query3": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Conteo historial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Divisor de mensajes": {
+      "main": [
+        [
+          {
+            "node": "Enviar primer msj",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Enviar tercer msj",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Enviar segundo msj",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar tercer msj": {
+      "main": [
+        [
+          {
+            "node": "Unir partes 1-2-3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar segundo msj": {
+      "main": [
+        [
+          {
+            "node": "¿Hay Parte 3?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Hay Parte 3?": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Unir partes 1-2-3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Enviar primer msj": {
+      "main": [
+        [
+          {
+            "node": "¿Hay Parte 2?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Hay Parte 2?": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Unir partes 1-2-3",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Tomador de pedidos": {
+      "main": [
+        [
+          {
+            "node": "Divisor de mensajes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Catálogo y precios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Numero de orden": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Numero de orden",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Conteo historial": {
+      "main": [
+        [
+          {
+            "node": "Parseo Historial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parseo Historial": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "consultar_numero_orden": {
+      "ai_tool": [
+        [
+          {
+            "node": "Tomador de pedidos",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "8dd22259-1aab-4546-9a22-45ead7fe0faa",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b5947e419e08758b08bd2aa74f40d7c4d5ad596bba057945428c7f99a4bd0116"
+  },
+  "id": "mjLLir4chNo6l4S8",
+  "tags": []
+}
