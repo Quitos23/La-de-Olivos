@@ -1,5 +1,4 @@
 {
-  "name": "La de Olivos",
   "nodes": [
     {
       "parameters": {
@@ -1869,64 +1868,6 @@
       }
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "n8n-hostinger-n8n.ceuf3o.easypanel.host",
-            "user-agent": "axios/0.27.2",
-            "content-length": "488",
-            "accept": "application/json, text/plain, */*",
-            "content-type": "application/json",
-            "traceparent": "00-85a7a2f011d35e64d04a4c88c0108a03-5bec4a33a65fa3cd-01",
-            "x-forwarded-for": "34.55.141.9",
-            "x-forwarded-host": "n8n-hostinger-n8n.ceuf3o.easypanel.host",
-            "x-forwarded-port": "443",
-            "x-forwarded-proto": "https",
-            "x-forwarded-server": "01e6a3901bb6",
-            "x-real-ip": "34.55.141.9",
-            "x-wa-event-id": "1fc73dcf-c3af-46e6-8cf4-6da973a373c5",
-            "x-wa-timestamp": "1781648393357",
-            "accept-encoding": "gzip"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "version": "1.0",
-            "event": "whatsapp.inbound",
-            "eventId": "1fc73dcf-c3af-46e6-8cf4-6da973a373c5",
-            "timestamp": "2026-06-16T22:19:53.355Z",
-            "locationId": "JhTCrnSxd7cSZoKsO6Ak",
-            "payload": {
-              "messageId": "3EB07BE372EB1F152ACC96",
-              "locationId": "JhTCrnSxd7cSZoKsO6Ak",
-              "device": {
-                "number": "+5491126076041",
-                "name": "Marco Santini"
-              },
-              "contact": {
-                "id": "bRabimN0T90jhfbVdiwP",
-                "number": "+5491158103313",
-                "name": "L"
-              },
-              "message": {
-                "text": "quiero hacer un pedido"
-              }
-            },
-            "meta": {
-              "traceId": "d87a8a5c4b1a02ac6c9e51ff4bb09cd8"
-            }
-          },
-          "webhookUrl": "https://n8n-hostinger-n8n.ceuf3o.easypanel.host/webhook/532d5cae-9990-470f-9fa7-5d693f7ea0d2",
-          "executionMode": "production"
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
   "connections": {
     "Catálogo y precios": {
       "main": [
@@ -1944,6 +1885,17 @@
         [
           {
             "node": "Tomador de pedidos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tomador de pedidos": {
+      "main": [
+        [
+          {
+            "node": "Divisor de mensajes",
             "type": "main",
             "index": 0
           }
@@ -2340,6 +2292,17 @@
         ]
       ]
     },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Conteo historial",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "If1": {
       "main": [
         [
@@ -2463,17 +2426,6 @@
         ]
       ]
     },
-    "Aggregate": {
-      "main": [
-        [
-          {
-            "node": "Conteo historial",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Divisor de mensajes": {
       "main": [
         [
@@ -2576,17 +2528,6 @@
         ]
       ]
     },
-    "Tomador de pedidos": {
-      "main": [
-        [
-          {
-            "node": "Divisor de mensajes",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Append row in sheet": {
       "main": [
         [
@@ -2672,16 +2613,9 @@
       ]
     }
   },
-  "active": true,
-  "settings": {
-    "executionOrder": "v1",
-    "binaryMode": "separate"
-  },
-  "versionId": "8dd22259-1aab-4546-9a22-45ead7fe0faa",
+  "pinData": {},
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "b5947e419e08758b08bd2aa74f40d7c4d5ad596bba057945428c7f99a4bd0116"
-  },
-  "id": "mjLLir4chNo6l4S8",
-  "tags": []
+  }
 }
